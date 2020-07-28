@@ -1,0 +1,130 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: url(00.jpg);
+	background-size: cover;
+	background-position: top center;
+
+	top: 15%;
+	margin: auto;
+	border-radius: 20px;
+	padding: 2%;
+	max-width: 550px;
+}
+
+.app-wrap {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 50px, 15px, 15px;
+}
+
+header input {
+	width: 300px;
+	max-width: 100%;
+	padding: 2%;
+	margin: 5%;
+	border: solid;
+	outline: none;
+	background-color: rgb(233, 66, 59);
+	border-radius: 12px;
+	border-color: rgba(255, 255, 255, 0.3);
+	border-width: 2px;
+	opacity: 0.65;
+
+	color: #313131;
+	font-size: 20px;
+	font-weight: 300;
+	transition: 0.2s ease-out;
+}
+
+#current-location-btn {
+	width: 100px;
+	display: block;
+	margin: auto;
+	background-color: rgb(233, 66, 59);
+	color: black;
+	font-weight: bold;
+	opacity: 0.9;
+}
+
+header input:focus {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+main {
+	flex: 1 1 100%;
+	padding: 25px 25px 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.location .city {
+	color: #ffffff;
+	font-size: 32px;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+
+.location .date {
+	color: #ffffff;
+	font-size: 16px;
+}
+
+.current .temp {
+	color: #ffffff;
+	font-size: 102px;
+	font-weight: 900;
+	margin: 30px 0px;
+	text-shadow: 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.current .temp span {
+	font-weight: 500;
+}
+
+.current .description {
+	color: #ffffff;
+	font-size: 32px;
+	font-weight: 700;
+	font-style: italic;
+	margin-bottom: 15px;
+	text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
+}
+
+.current .hi-low {
+	color: #ffffff;
+	font-size: 24px;
+	font-weight: 500;
+	text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.humidity,
+.wind {
+	text-align: center;
+	padding: 1%;
+	color: #ffffff;
+}
+
+.author {
+	font-size: small;
+	margin: 0 auto;
+	display: block;
+	text-align: center;
+	color: #ffffff;
+	cursor: pointer;
+}
