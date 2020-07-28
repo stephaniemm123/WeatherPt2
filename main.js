@@ -5,13 +5,13 @@ const api = {
 	mainUrl: 'https://api.openweathermap.org/data/2.5/'
 };
 
-const searchbox = document.querySelector(`.search-box`);
-searchbox.addEventListener('keypress', setQuery);
+const searchForm = document.querySelector(`#search-form`);
+searchForm.addEventListener('submit', setQuery);
 
-function setQuery(evt) {
-	if (evt.keyCode == 13) {
-		getResults(searchbox.value);
-	}
+function setQuery(event) {
+	event.preventDefault();
+	let searchbox = document.querySelector('.search-box');
+	getResults(searchbox.value);
 }
 
 function getResults(query) {
@@ -24,7 +24,7 @@ function getResults(query) {
 
 function displayResults(weather) {
 	let city = document.querySelector('.location .city');
-	city.innerHTML = `${weather.name}, ${weather.sys}`;
+	city.innerHTML = `${weather.name}, ${weather.sys.country}`;
 
 	let now = new Date();
 	let date = document.querySelector('.location .date');
