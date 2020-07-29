@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang=eng>
 <head>
-
-    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,22 +18,112 @@
             <input type="button" id="current-location-btn" value="Current" />
     </header>
     <main>
-        <section class="location">
-            <div class="city">San Antonio, Tx</div>
-            <div class="date">Monday 2 July 2020</div>
-        </section>
-        <div class="current">
-            <div class="temp">90°F</div>
-            <div class="description">Sunny</div>
-            <div class="hi-low">70°F | 99°F</div>
-            <div class="humidity">Humidity <span id="humidity">41</span>%</div>
-            <div class="wind">Wind <span id="wind">4</span>kmh</div>
+        <div class="info-wrap">
+            <section class="location">
+                <div class="city">San Antonio, Tx</div>
+                <div class="date">Monday 2 July 2020</div>
+            </section>
+            <div class="current">
+                <div class="temp">90°F</div>
+                <div class="description">Sunny <img src="https://img.icons8.com/fluent/48/000000/summer.png"/></div>
+                <div class="hi-low">70°F | 99°F</div>
+                <div class="humidity">Humidity <span id="humidity">41</span>%</div>
+                <div class="wind">Wind <span id="wind">4</span>kmh</div>
+            </div>
         </div>
+        <section class="hourly-forecast">
+            <div class="hourly">Hourly </div>
+                <div class="forecast-wrap">
+                    <div class="row">
+                        <div class="col first-column">
+                            <div class="times">
+                                09:00
+                            </div>
+
+                            <div class="rain-prediction">
+                                <img src="https://img.icons8.com/material-two-tone/24/000000/rain.png"/> 4%
+                            </div>
+
+                            <div class="other-temperature">
+                                22°C
+                            </div>
+                        </div>
+
+                        <div class="col second-column">
+                            <div class="other-time">
+                                12:00
+                            </div>
+                        
+                            <div class="rain-prediction">
+                                <img src="https://img.icons8.com/material-two-tone/24/000000/rain.png"/> 4%
+                            </div>
+                        
+                            <div class="other-temperature">
+                                21˚C
+                            </div>
+                        </div>
+                        
+                        <div class="col third-column">
+                            <div class="other-time">
+                                15:00
+                            </div>
+                        
+                            <div class="other-weather-image">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                        
+                            <div class="rain-prediction">
+                                <img src="https://img.icons8.com/material-two-tone/24/000000/rain.png"/> 4%
+                            </div>
+                        
+                            <div class="other-temperature">
+                                21˚C
+                            </div>
+                        </div>
+                            
+                        <div class="col forth-column">
+                            <div class="other-time">
+                                18:00
+                            </div>
+                        
+                            <div class="other-weather-image">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                        
+                            <div class="rain-prediction">
+                                <img src="https://img.icons8.com/material-two-tone/24/000000/rain.png"/> 4%
+                            </div>
+                        
+                            <div class="other-temperature">
+                                20˚C
+                            </div>
+                        </div>
+                    
+                        <div class="col fifth-column">
+                            <div class="other-time">
+                                21:00
+                            </div>
+                        
+                            <div class="other-weather-image">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                        
+                            <div class="rain-prediction">
+                                <img src="https://img.icons8.com/material-two-tone/24/000000/rain.png"/> 4%
+                            </div>
+                        
+                            <div class="other-temperature">
+                                19˚C
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-</div>
-    <div class="author"><a href="https://github.com/stephaniemm123/WeatherPt2">Open source code</a> by <a
-        href="mailto:stephaniemm123@gmail.com"> Stephanie Muñoz</a>
-    </div>
-<script src="main.js"></script>
+        <div class="author"><a href="https://github.com/stephaniemm123/WeatherPt2">Open source code</a> by <a
+            href="mailto:stephaniemm123@gmail.com"> Stephanie Muñoz</a>
+        </div>
+            <script src="main.js"></script>
 </body>
 </html>

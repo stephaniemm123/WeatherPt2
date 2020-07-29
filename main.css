@@ -20,7 +20,6 @@ body {
 .app-wrap {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
 	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
 }
 
@@ -28,7 +27,7 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 50px, 15px, 15px;
+	padding: 30px, 15px, 15px;
 }
 
 header input {
@@ -46,7 +45,7 @@ header input {
 
 	color: #313131;
 	font-size: 20px;
-	font-weight: 300;
+	font-weight: 100px;
 	transition: 0.2s ease-out;
 }
 
@@ -55,9 +54,41 @@ header input {
 	display: block;
 	margin: auto;
 	background-color: rgb(233, 66, 59);
-	color: black;
+	color: #ffffff;
 	font-weight: bold;
 	opacity: 0.9;
+}
+
+.info-wrap {
+	border-style: solid;
+	border-color: rgba(255, 255, 255, 0.3);
+	border-radius: 12px;
+	padding: 10px 118px;
+	background-color: rgb(233, 66, 59);
+}
+
+.hourly-forecast .hourly {
+	text-align: left;
+	color: #ffffff;
+	font-size: 24px;
+	font-weight: 500;
+	text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hourly-forecast .row {
+	padding: 1%;
+	font-weight: bold;
+	color: #ffffff;
+	opacity: 0.9;
+}
+
+.forecast-wrap {
+	border-style: solid;
+	border-color: rgba(255, 255, 255, 0.3);
+	border-radius: 12px;
+	color: #000000;
+	padding: 30px 15px;
+	background-color: rgb(233, 66, 59);
 }
 
 header input:focus {
@@ -75,9 +106,9 @@ main {
 
 .location .city {
 	color: #ffffff;
-	font-size: 32px;
+	font-size: 24px;
 	font-weight: 500;
-	margin-bottom: 5px;
+	margin-bottom: 2%;
 }
 
 .location .date {
@@ -87,9 +118,9 @@ main {
 
 .current .temp {
 	color: #ffffff;
-	font-size: 102px;
+	font-size: 60px;
 	font-weight: 900;
-	margin: 30px 0px;
+	margin: 10px 0px;
 	text-shadow: 2px 10px rgba(0, 0, 0, 0.6);
 }
 
@@ -117,7 +148,7 @@ main {
 .wind {
 	text-align: center;
 	padding: 1%;
-	color: #ffffff;
+	color: rgb(233, 66, 59);
 }
 
 .author {
@@ -125,6 +156,6 @@ main {
 	margin: 0 auto;
 	display: block;
 	text-align: center;
-	color: #ffffff;
+	color: rgb(233, 66, 59);
 	cursor: pointer;
 }
