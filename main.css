@@ -159,3 +159,18 @@ main {
 	color: rgb(233, 66, 59);
 	cursor: pointer;
 }
+
+.convert {
+	color: #5b6275;
+	position: relative;
+	top: -10px;
+}
+
+.convert .active {
+	color: #5b6275;
+	cursor: default;
+}
+
+.convert .active:hover {
+	text-decoration: none;
+}
