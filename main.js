@@ -26,6 +26,8 @@ function displayResults(weather) {
 	let city = document.querySelector('.location .city');
 	city.innerHTML = `${weather.name}, ${weather.sys.country}`;
 
+	celsiusTemp = response.data.main.temp;
+
 	let now = new Date();
 	let date = document.querySelector('.location .date');
 	date.innerHTML = dateBuilder(now);
