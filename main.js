@@ -42,6 +42,23 @@ function displayResults(weather) {
 	hilow.innerHTML = `${Math.round(weather.main.temp_min)}°F | ${Math.round(weather.main.temp_max)}°F`;
 }
 
+//Search Current Location...
+
+function displayResults(weather) {
+	let city = document.querySelector('.location .city');
+	city.innerHTML = `${weather.name}, ${weather.sys.country}`;
+	celsiusTemp = weather.main.temp;
+	let now = new Date(weather.dt);
+	let date = document.querySelector('.location .date');
+	date.innerHTML = dateBuilder(now);
+	let temp = document.querySelector('#temperature');
+	temp.innerHTML = `${Math.round(weather.main.temp)}`;
+	let weatherElement = document.querySelector('.description');
+	weatherElement.innerHTML = weather.weather[0].main;
+	let hilow = document.querySelector('.hi-low');
+	hilow.innerHTML = `${Math.round(weather.main.temp_min)}°F | ${Math.round(weather.main.temp_max)}°F`;
+}
+
 function dateBuilder(d) {
 	let months = [
 		'January',
@@ -56,26 +73,12 @@ function dateBuilder(d) {
 		'Novemeber',
 		'December'
 	];
-	let days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ];
-
+	let days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
 	let day = days[d.getDay()];
 	let date = d.getDate();
 	let month = months[d.getMonth()];
 	let year = d.getFullYear();
-
 	return `${day} ${date} ${month} ${year}`;
-}
-
-//Search Current Location...
-
-function displayWeather(response) {
-	document.querySelector('.city').innerHTML = response.data.name;
-	document.querySelector('.temp').innerHTML = Math.round(response.data.main.temp);
-
-	celsiusTemp = response.data.main.temp;
-
-	document.querySelector('#humidity').innerHTML = response.data.main.humidity;
-	document.querySelector('#wind').innerHTML = Math.round(response.data.wind.speed);
 }
 
 function searchCurrentLocation(position) {
