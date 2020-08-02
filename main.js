@@ -1,6 +1,6 @@
 //Search a city...
-const searchForm = document.querySelector(`#search-form`);
-searchForm.addEventListener('submit', setQuery);
+let searchForm = document.querySelector(`#search-form`);
+searchForm.addEventListener('submit', setCity);
 
 function dateBuilder(d) {
 	let months = [
@@ -25,7 +25,7 @@ function dateBuilder(d) {
 }
 
 function displayResults(response) {
-	let cityElement = document.querySelector('.location .city');
+	let city = document.querySelector('.location .city');
 	let now = new Date();
 	let dateElement = document.querySelector('.location .date');
 	let hilowElement = document.querySelector('.hi-low');
@@ -35,15 +35,15 @@ function displayResults(response) {
 	celsiusTemp = response.data.main.temp;
 
 	dateElement.innerHTML = dateBuilder(now);
-	tempElement.innerHTML = `${Math.round(weather.main.temp)}<span>°F</span>`;
-	weatherElement.innerHTML = weather.weather[0].main;
-	cityElement.innerHTML = `${weather.name}, ${weather.sys.country}`;
-	hilowElement.innerHTML = `${Math.round(weather.main.temp_min)}°F | ${Math.round(weather.main.temp_max)}°F`;
+	tempElement.innerHTML = `${Math.round(response.main.temp)}`;
+	weatherElement.innerHTML = response.weather[0].main;
+	city.innerHTML = `${response.name}, ${response.sys.country}`;
+	hilowElement.innerHTML = `${Math.round(response.main.temp_min)}°F | ${Math.round(response.main.temp_max)}°F`;
 }
 
 function search(city) {
 	let apiKey = 'd944cfc973fb372d3ea53f75216ec984';
-	let apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric';
+	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 	axios.get(apiUrl).then(displayResults);
 }
 
