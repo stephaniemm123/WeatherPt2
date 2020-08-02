@@ -14,49 +14,29 @@ function setQuery(event) {
 	getResults(searchbox.value);
 }
 
-function getResults(query) {
-	fetch(`${api.mainUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
-		.then((weather) => {
-			return weather.json();
-		})
-		.then(displayResults);
-}
+//function getResults(query) {
+//	fetch(`${api.mainUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
+//		.then((weather) => {
+//			return weather.json();
+//		})
+//		.then(displayResults);
+//}
 
-function displayResults(weather) {
-	let city = document.querySelector('.location .city');
-	city.innerHTML = `${weather.name}, ${weather.sys.country}`;
+function displayResults(response) {
+	let cityElement = document.querySelector('.location .city');
+	let now = new Date();
+	let dateElement = document.querySelector('.location .date');
+	let hilowElement = document.querySelector('.hi-low');
+	let weatherElement = document.querySelector('.current .weather');
+	let tempElement = document.querySelector('.current .temp');
 
 	celsiusTemp = response.data.main.temp;
 
-	let now = new Date();
-	let date = document.querySelector('.location .date');
-	date.innerHTML = dateBuilder(now);
-
-	let temp = document.querySelector('.current .temp');
-	temp.innerHTML = `${Math.round(weather.main.temp)}<span>°F</span>`;
-
-	let weatherElement = document.querySelector('.current .weather');
+	dateElement.innerHTML = dateBuilder(now);
+	tempElement.innerHTML = `${Math.round(weather.main.temp)}<span>°F</span>`;
 	weatherElement.innerHTML = weather.weather[0].main;
-
-	let hilow = document.querySelector('.hi-low');
-	hilow.innerHTML = `${Math.round(weather.main.temp_min)}°F | ${Math.round(weather.main.temp_max)}°F`;
-}
-
-//Search Current Location...
-
-function displayResults(weather) {
-	let city = document.querySelector('.location .city');
-	city.innerHTML = `${weather.name}, ${weather.sys.country}`;
-	celsiusTemp = weather.main.temp;
-	let now = new Date(weather.dt);
-	let date = document.querySelector('.location .date');
-	date.innerHTML = dateBuilder(now);
-	let temp = document.querySelector('#temperature');
-	temp.innerHTML = `${Math.round(weather.main.temp)}`;
-	let weatherElement = document.querySelector('.description');
-	weatherElement.innerHTML = weather.weather[0].main;
-	let hilow = document.querySelector('.hi-low');
-	hilow.innerHTML = `${Math.round(weather.main.temp_min)}°F | ${Math.round(weather.main.temp_max)}°F`;
+	cityElement.innerHTML = `${weather.name}, ${weather.sys.country}`;
+	hilowElement.innerHTML = `${Math.round(weather.main.temp_min)}°F | ${Math.round(weather.main.temp_max)}°F`;
 }
 
 function dateBuilder(d) {
