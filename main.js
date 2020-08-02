@@ -1,43 +1,6 @@
 //Search a city...
-
-const api = {
-	key: 'd944cfc973fb372d3ea53f75216ec984',
-	mainUrl: 'https://api.openweathermap.org/data/2.5/'
-};
-
 const searchForm = document.querySelector(`#search-form`);
 searchForm.addEventListener('submit', setQuery);
-
-function setQuery(event) {
-	event.preventDefault();
-	let searchbox = document.querySelector('.search-box');
-	getResults(searchbox.value);
-}
-
-//function getResults(query) {
-//	fetch(`${api.mainUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
-//		.then((weather) => {
-//			return weather.json();
-//		})
-//		.then(displayResults);
-//}
-
-function displayResults(response) {
-	let cityElement = document.querySelector('.location .city');
-	let now = new Date();
-	let dateElement = document.querySelector('.location .date');
-	let hilowElement = document.querySelector('.hi-low');
-	let weatherElement = document.querySelector('.current .weather');
-	let tempElement = document.querySelector('.current .temp');
-
-	celsiusTemp = response.data.main.temp;
-
-	dateElement.innerHTML = dateBuilder(now);
-	tempElement.innerHTML = `${Math.round(weather.main.temp)}<span>°F</span>`;
-	weatherElement.innerHTML = weather.weather[0].main;
-	cityElement.innerHTML = `${weather.name}, ${weather.sys.country}`;
-	hilowElement.innerHTML = `${Math.round(weather.main.temp_min)}°F | ${Math.round(weather.main.temp_max)}°F`;
-}
 
 function dateBuilder(d) {
 	let months = [
@@ -59,6 +22,35 @@ function dateBuilder(d) {
 	let month = months[d.getMonth()];
 	let year = d.getFullYear();
 	return `${day} ${date} ${month} ${year}`;
+}
+
+function displayResults(response) {
+	let cityElement = document.querySelector('.location .city');
+	let now = new Date();
+	let dateElement = document.querySelector('.location .date');
+	let hilowElement = document.querySelector('.hi-low');
+	let weatherElement = document.querySelector('.current .weather');
+	let tempElement = document.querySelector('.current .temp');
+
+	celsiusTemp = response.data.main.temp;
+
+	dateElement.innerHTML = dateBuilder(now);
+	tempElement.innerHTML = `${Math.round(weather.main.temp)}<span>°F</span>`;
+	weatherElement.innerHTML = weather.weather[0].main;
+	cityElement.innerHTML = `${weather.name}, ${weather.sys.country}`;
+	hilowElement.innerHTML = `${Math.round(weather.main.temp_min)}°F | ${Math.round(weather.main.temp_max)}°F`;
+}
+
+function search(city) {
+	let apiKey = 'd944cfc973fb372d3ea53f75216ec984';
+	let apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric';
+	axios.get(apiUrl).then(displayResults);
+}
+
+function searchCity(event) {
+	event.preventDefault();
+	let searchbox = document.querySelector('.search-box');
+	search(searchbox.value);
 }
 
 function searchCurrentLocation(position) {
