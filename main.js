@@ -21,35 +21,18 @@ function dateBuilder(d) {
 }
 
 function displayResults(response) {
+	let tempElement = document.querySelector('.current .temp');
 	let city = document.querySelector('.location .city');
 	let now = new Date();
 	let dateElement = document.querySelector('.location .date');
 	let hilowElement = document.querySelector('.hi-low');
-	let weatherElement = document.querySelector('.current .weather');
-	let tempElement = document.querySelector('.current .temp');
 
 	celsiusTemp = response.data.main.temp;
 
 	dateElement.innerHTML = dateBuilder(now);
-	tempElement.innerHTML = `${Math.round(response.main.temp)}`;
-	weatherElement.innerHTML = response.weather[0].main;
-	city.innerHTML = `${response.name}, ${response.sys.country}`;
-	hilowElement.innerHTML = `${Math.round(response.main.temp_min)}°F | ${Math.round(response.main.temp_max)}°F`;
-}
-
-function search(city) {
-	let apiKey = 'd944cfc973fb372d3ea53f75216ec984';
-	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-	axios.get(apiUrl).then(displayResults);
-
-	let searchForm = document.querySelector(`#search-form`);
-	searchForm.addEventListener('submit', searchCity);
-}
-
-function searchCity(event) {
-	event.preventDefault();
-	let searchbox = document.querySelector('.search-box');
-	search(searchbox.value);
+	tempElement.innerHTML = `${Math.round(celsiusTemp)}`;
+	city.innerHTML = response.data.name;
+	hilowElement.innerHTML = `${Math.round(response.main.temp_min)}°C | ${Math.round(response.main.temp_max)}°C`;
 }
 
 function searchCurrentLocation(position) {
@@ -67,8 +50,17 @@ function getCurrent(event) {
 	navigator.geolocation.getCurrentPosition(searchCurrentLocation);
 }
 
-let currentButton = document.querySelector('#current-location-btn');
-currentButton.addEventListener('click', getCurrent);
+function search(city) {
+	let apiKey = 'd944cfc973fb372d3ea53f75216ec984';
+	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+	axios.get(apiUrl).then(displayResults);
+}
+
+function searchBar(event) {
+	event.preventDefault();
+	let searchbox = document.querySelector('.search-box');
+	search(searchbox.value);
+}
 
 // convert to F
 
@@ -82,9 +74,6 @@ function showAsFahrenheit(event) {
 	celsiusLink.classList.remove('active');
 }
 
-let fahrenheitLink = document.querySelector('#fahrenheit-link');
-fahrenheitLink.addEventListener('click', showAsFahrenheit);
-
 // Convert to C
 
 function showAsCelsius(event) {
@@ -96,7 +85,16 @@ function showAsCelsius(event) {
 	fahrenheitLink.classList.remove('active');
 }
 
+let celsiusTemp = null;
+
+let form = document.querySelector(`#search-form`);
+form.addEventListener('submit', searchBar);
+
+let fahrenheitLink = document.querySelector('#fahrenheit-link');
+fahrenheitLink.addEventListener('click', showAsFahrenheit);
+
 let celsiusLink = document.querySelector('#celsius-link');
 celsiusLink.addEventListener('click', showAsCelsius);
 
-let celsiusTemp = null;
+let currentButton = document.querySelector('#current-location-btn');
+currentButton.addEventListener('click', getCurrent);
