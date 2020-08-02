@@ -148,9 +148,15 @@ main {
 .wind {
 	text-align: center;
 	padding: 1%;
-	color: rgb(233, 66, 59);
+	color: #ffffff;
 }
 
+li {
+	list-style: none;
+	color: #ffffff;
+	font-weight: 500;
+	text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
+}
 .author {
 	font-size: small;
 	margin: 0 auto;
@@ -173,4 +179,5 @@ main {
 
 .convert .active:hover {
 	text-decoration: none;
+	cursor: default;
 }

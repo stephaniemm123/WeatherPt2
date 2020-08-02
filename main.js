@@ -26,6 +26,9 @@ function displayResults(response) {
 	let now = new Date();
 	let dateElement = document.querySelector('.location .date');
 	let hilowElement = document.querySelector('.hi-low');
+	let descriptionElement = document.querySelector('.description');
+	let humidityElement = document.querySelector('.humidity');
+	let windElement = document.querySelector('.wind');
 
 	celsiusTemp = response.data.main.temp;
 
@@ -35,6 +38,9 @@ function displayResults(response) {
 	hilowElement.innerHTML = `${Math.round(response.data.main.temp_min)}°C | ${Math.round(
 		response.data.main.temp_max
 	)}°C`;
+	descriptionElement.innerHTML = response.data.weather[0].description;
+	humidityElement.innerHTML = response.data.main.humidity;
+	windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function searchCurrentLocation(position) {
