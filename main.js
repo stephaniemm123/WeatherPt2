@@ -21,7 +21,7 @@ function dateBuilder(d) {
 }
 
 function displayResults(response) {
-	let tempElement = document.querySelector('.current .temp');
+	let tempElement = document.querySelector('#temperature');
 	let city = document.querySelector('.location .city');
 	let now = new Date();
 	let dateElement = document.querySelector('.location .date');
@@ -32,7 +32,9 @@ function displayResults(response) {
 	dateElement.innerHTML = dateBuilder(now);
 	tempElement.innerHTML = `${Math.round(celsiusTemp)}`;
 	city.innerHTML = response.data.name;
-	hilowElement.innerHTML = `${Math.round(response.main.temp_min)}°C | ${Math.round(response.main.temp_max)}°C`;
+	hilowElement.innerHTML = `${Math.round(response.data.main.temp_min)}°C | ${Math.round(
+		response.data.main.temp_max
+	)}°C`;
 }
 
 function searchCurrentLocation(position) {
